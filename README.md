@@ -28,9 +28,9 @@ hundreds or thousands of escaped Unicode symbols...
 
 # How?
 
-    git clone https://github.com/earksiinni/postycode.git
-    cd postycode
-    ./postycode 0012-00AB
+    gem install postycode
+    postycode 0012-00AB
+    postycode --help
 
 # Who?
 
