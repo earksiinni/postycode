@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require 'postycode'
+
+invalid_usage = "Invalid usage.  Use --help or -h option for additional information."
+help = "Usage: postycode [-h] utf8code[-utf8code] [utf8code[-utf8code]] ...
+
+Examples:
+  postycode 0050-0059
+  postycode 00A3-00B9 0003-0042
+  postycode 0352 0B23-0B59 0936 12AA
+"
+
+# Make sure command was run properly
+if ARGV.count > 0
+  abort(help) if (ARGV[0] == "--help") || (ARGV[0] == "-h")
+  
+  ARGV.each do |arg|
+    abort(invalid_usage) unless (arg =~ /^[0-9A-Fa-f]{4}(-[0-9A-Fa-f]{4})?$/)
+  end
+else
+  abort(help)
+end
+
+puts Postycode.parse ARGV
